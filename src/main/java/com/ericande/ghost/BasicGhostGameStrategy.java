@@ -7,9 +7,10 @@ import java.util.List;
 import java.util.Random;
 import java.util.SortedMap;
 
+import static com.ericande.ghost.GhostGame.CHALLENGE;
+
 public class BasicGhostGameStrategy implements GhostGameStrategy {
     private static final Random RANDOM = new Random();
-    private static final char CHALLENGE = '!';
     /*
     *Behavior: Picks a letter which continues but does not finish a valid word if one is available
     * If none are available, challenges.

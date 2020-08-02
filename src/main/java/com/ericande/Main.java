@@ -1,6 +1,7 @@
 package com.ericande;
 
 import com.ericande.ghost.GhostGame;
+import com.ericande.ghost.MinimaxGhostGameStrategy;
 
 import java.util.*;
 import java.util.function.Supplier;
@@ -88,6 +89,9 @@ public class Main {
         Map<String, Supplier<Game>> myMap = new HashMap<>();
         myMap.put("1", GhostGame::new);
         myMap.put("ghost", GhostGame::new);
+        myMap.put("2", () -> new GhostGame(new FileImporter().setFilter(GhostGame::validWordForGhost).loadWordTrie(),
+                new MinimaxGhostGameStrategy(),
+                new Random()));
         return myMap;
     }
 
@@ -102,7 +106,8 @@ public class Main {
         return myQuitCommands;
     }
     private static final String GAME_CHOICES = "Choose a game to play\n" +
-            "1. Ghost";
+            "1. Ghost\n" +
+            "2. Ghost (hard)";
     private static final String WELCOME_MESSAGE = "Welcome!";
     private static final String HELP_MESSAGE = "The following are valid commands:\n" +
             SHOW_HELP + "\n" +

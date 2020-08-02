@@ -9,6 +9,7 @@ import java.util.Random;
 import java.util.SortedMap;
 
 public class GhostGame implements Game {
+    public static final char CHALLENGE = '!';
     private static final String GIVE_UP = "give up";
     private final Random theRandom;
     private final Trie<String, Object> theDictionary;
@@ -134,7 +135,7 @@ public class GhostGame implements Game {
     }
 
     private boolean isChallenge(String aMove) {
-        return aMove.equals("!") || aMove.equals("challenge");
+        return aMove.equals(String.valueOf(CHALLENGE)) || aMove.equals("challenge");
     }
 
     private String firstMove() {
@@ -178,7 +179,7 @@ public class GhostGame implements Game {
                 ".\nDo you have a word? (Or type \"" + GIVE_UP + "\" if you don't have one!";
     }
 
-    private static boolean validWordForGhost(String aWord) {
+    public static boolean validWordForGhost(String aWord) {
         return aWord.length() > 2;
     }
 
